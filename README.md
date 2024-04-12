@@ -1,21 +1,26 @@
 # GenePT  <img src="./figs/genept_sticker.png" align="right" width="150px"/>
 
+### News
+March 2024: We've uploaded new GenePT embeddings with 1. additional protein information and 2. newer text embedding models at [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.10833191.svg)](https://doi.org/10.5281/zenodo.10833191).
+
 ### What is GenePT?
 
-`GenePT` is a single-cell foundation model that leverages ChatGPT embeddings to tackle gene-level and cell-level biology tasks. This project is motivated by the significant recent progress in using large-scale (e.g., tens of millions of cells) gene expression data to develop foundation models for single-cell biology. These models implicitly learn gene and cellular functions from the gene expression profiles, which requires extensive data curation and resource-intensive training. By contrast, GenePT offers a complementary approach by using NCBI text descriptions of individual genes with GPT-3.5 to generate gene embeddings. From there, GenePT generates single-cell embeddings in two ways: (i) by averaging the gene embeddings, weighted by each gene’s expression level; or (ii) by creating a sentence embedding for each cell, using gene names ordered by the expression level. 
+`GenePT` is a single-cell foundation model (that is, a model trained on broad data enabling it to be applied across a wide range of downstream tasks) that leverages ChatGPT embeddings to address gene-level and cell-level biology tasks. This project is inspired by the significant recent progress in using large-scale gene expression data (e.g., tens of millions of cells) to develop foundation models for single-cell biology.
 
-Without the need for dataset curation and additional pretraining, GenePT is efficient and easy to use. On many downstream tasks used to evaluate recent single-cell foundation models --- e.g., classifying gene properties and cell types --- GenePT achieves comparable, and often better, performance than existing single-cell foundation models. GenePT demonstrates that large language model embedding of literature is a simple and effective path for biological foundation models.
+Existing models indirectly learn gene and cellular functions from gene expression profiles, often requiring extensive data curation and resource-intensive training. In contrast, GenePT offers a complementary approach by using NCBI text descriptions of individual genes combined with GPT-3.5 to generate gene embeddings. GenePT then produces single-cell embeddings in two ways: (i) by averaging the gene embeddings, weighted by each gene’s expression level; or (ii) by creating a sentence embedding for each cell, using gene names ordered by expression level.
+
+Without the need for dataset curation and additional pre-training, GenePT is efficient and user-friendly. In many downstream tasks used to evaluate recent single-cell foundation models—such as classifying gene properties and cell types—GenePT achieves comparable, and often superior, performance to existing single-cell foundation models. GenePT demonstrates that using large language model embeddings of literature is a straightforward and effective approach for developing biological foundation models.
 
 ### How do I use GenePT?
+The analysis scripts used to generate GenePT data and to reproduce the analysis in the paper can be found in the repository (with details for each script in the Breakdown of analysis files section below).
 
-The analysis scripts used to generate GenePT data and to reproduce the analysis in the paper can be found in the repo (with details for each script in the **Breakdown of analysis files** section below). 
+We also provide the following list of readily available datasets that might be useful for a broader range of applications:
 
-We also provide the following list of readily-available datasets that might be useful for a broader range of applications:
 1. Extracted summary texts scraped from the NCBI page for each gene.
-2. Pre-computed GPT-3.5 embeddings (`text-embedding-ada-002`) for each gene.
-These data are deposited at [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.10030426.svg)](https://doi.org/10.5281/zenodo.10030426).
+2. Pre-computed OpenAI embeddings (`text-embedding-ada-002` and `text-embedding-3-large`) for the corresponding gene summaries.
 
-
+These data are deposited at [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.10833191.svg)](https://doi.org/10.5281/zenodo.10833191).
+.
 
 ### Tutorials and Use
 
@@ -27,12 +32,11 @@ We provide example notebooks to run the following analyses:
 
 Please file an [issue](https://github.com/yiqunchen/GenePT/issues) if you have a request for a tutorial that is not currently included.
 
-
 ### Citation
 
 If you use `GenePT` for your analysis, please cite our manuscript:
 
-Chen YT,  Zou J. (2023+) GenePT: A Simple But Hard-to-Beat Foundation Model for Genes and Cells Built From ChatGPT. bioRxiv preprint: https://www.biorxiv.org/content/10.1101/2023.10.16.562533v1.
+Chen YT,  Zou J. (2023+) GenePT: A Simple But Effective Foundation Model for Genes and Cells Built From ChatGPT. bioRxiv preprint: https://www.biorxiv.org/content/10.1101/2023.10.16.562533v2.
 
 
 ### Breakdown of analysis files:
